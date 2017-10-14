@@ -1,4 +1,4 @@
-﻿namespace ConsoleCalculator
+﻿namespace ConsoleCalculator.Operands
 {
     public class RawOperand : IOperand
     {

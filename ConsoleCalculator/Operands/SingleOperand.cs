@@ -1,6 +1,4 @@
-﻿using System.Dynamic;
-
-namespace ConsoleCalculator
+﻿namespace ConsoleCalculator.Operands
 {
     public class SingleOperand : IOperand
     {
@@ -8,12 +6,13 @@ namespace ConsoleCalculator
         {
             _command = command;
         }
-
+        
         private IOperationCommand _command;
+        private IOperand _leftOperand;
         
         public double GetValue()
         {
-            throw new System.NotImplementedException();
+            return _command.Execute();
         }
     }
 }

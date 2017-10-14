@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Runtime.InteropServices.WindowsRuntime;
 
-namespace ConsoleCalculator
+namespace ConsoleCalculator.Operations
 {
     public class FactorialCommand : IOperationCommand
     {
-        public double Value1 { get; set; }
-        public double Value2 { get; set; }
-        public double Execute()
+        public FactorialCommand(double leftOperand) : base(leftOperand, Double.NaN) {}
+        
+        public override double Execute()
         {
-            return CalculateFactorial(Value1);
+            return CalculateFactorial(_leftOperand);
         }
 
         private double CalculateFactorial(double value)

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using ConsoleCalculator.Operands;
+using NUnit.Framework;
 
 namespace ConsoleCalculator.OperandTests.Tests
 {
@@ -8,8 +9,7 @@ namespace ConsoleCalculator.OperandTests.Tests
         [Test]
         public void TestRawOperand()
         {
-            RawOperand rawOperand = new RawOperand();
-            rawOperand.SetValue(5);
+            RawOperand rawOperand = new RawOperand(5);
             
             Assert.AreEqual(rawOperand.GetValue(), 5);
         }

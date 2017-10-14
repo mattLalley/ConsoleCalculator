@@ -1,10 +1,24 @@
-﻿namespace ConsoleCalculator
+﻿using System;
+
+namespace ConsoleCalculator
 {
-    public interface IOperationCommand
+    public abstract class IOperationCommand
     {
-        double Value1 { get; set; }
-        double Value2 { get; set; }
+        public IOperationCommand()
+        {
+            _leftOperand = Double.NaN;
+            _rightOperand = Double.NaN;
+        }
         
-        double Execute();
+        public IOperationCommand(double leftOperand, double rightOperand)
+        {
+            _leftOperand = leftOperand;
+            _rightOperand = rightOperand;
+        }
+
+        protected double _leftOperand;
+        protected double _rightOperand;
+        
+        public abstract double Execute();
     }
 }

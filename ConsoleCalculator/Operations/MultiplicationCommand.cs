@@ -1,12 +1,12 @@
-﻿namespace ConsoleCalculator
+﻿namespace ConsoleCalculator.Operations
 {
     public class MultiplicationCommand : IOperationCommand
     {
-        public double Value1 { get; set; }
-        public double Value2 { get; set; }
-        public double Execute()
+        public MultiplicationCommand(double leftOperand, double rightOperand) : base(leftOperand, rightOperand) {}
+        
+        public override double Execute()
         {
-            return Value1 * Value2;
+            return _leftOperand * _rightOperand;
         }
     }
 }

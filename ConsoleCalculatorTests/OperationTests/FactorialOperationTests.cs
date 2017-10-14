@@ -1,4 +1,5 @@
 ﻿using System;
+using ConsoleCalculator.Operations;
 using NUnit.Framework;
 
 namespace ConsoleCalculator.OperationTests.Tests
@@ -9,10 +10,7 @@ namespace ConsoleCalculator.OperationTests.Tests
         [Test]
         public void TestFactorialNegative()
         {
-            FactorialCommand factorialCommand = new FactorialCommand
-            {
-                Value1 = -1
-            };
+            FactorialCommand factorialCommand = new FactorialCommand(-1);
 
             Assert.Throws(
                 Is.TypeOf<ArgumentException>().
@@ -24,10 +22,7 @@ namespace ConsoleCalculator.OperationTests.Tests
         [Test]
         public void TestFactorialZero()
         {
-            FactorialCommand factorialCommand = new FactorialCommand
-            {
-                Value1 = 0 
-            };
+            FactorialCommand factorialCommand = new FactorialCommand(0);
 
             double result = factorialCommand.Execute();
             Assert.AreEqual(result, 1);
@@ -36,10 +31,7 @@ namespace ConsoleCalculator.OperationTests.Tests
         [Test]
         public void TestFactorialOne()
         {
-            FactorialCommand factorialCommand = new FactorialCommand
-            {
-                Value1 = 1 
-            };
+            FactorialCommand factorialCommand = new FactorialCommand(1);
 
             double result = factorialCommand.Execute();
             Assert.AreEqual(result, 1);
@@ -48,10 +40,7 @@ namespace ConsoleCalculator.OperationTests.Tests
         [Test]
         public void TestFactorialTwo()
         {
-            FactorialCommand factorialCommand = new FactorialCommand
-            {
-                Value1 = 2 
-            };
+            FactorialCommand factorialCommand = new FactorialCommand(2);
 
             double result = factorialCommand.Execute();
             Assert.AreEqual(result, 2);
@@ -60,10 +49,7 @@ namespace ConsoleCalculator.OperationTests.Tests
         [Test]
         public void TestFactorialGreaterThanTwo()
         {
-            FactorialCommand factorialCommand = new FactorialCommand
-            {
-                Value1 = 4
-            };
+            FactorialCommand factorialCommand = new FactorialCommand(4);
 
             double result = factorialCommand.Execute();
             Assert.AreEqual(result, 24);

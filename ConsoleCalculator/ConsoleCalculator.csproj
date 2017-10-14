@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleCalculator.cs" />
+    <Compile Include="Operands\DoubleOperand.cs" />
     <Compile Include="Operands\IOperand.cs" />
+    <Compile Include="Operands\IOperandValue.cs" />
     <Compile Include="Operands\RawOperand.cs" />
     <Compile Include="Operands\SingleOperand.cs" />
     <Compile Include="Operations\DivisionCommand.cs" />

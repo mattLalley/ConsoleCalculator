@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using ConsoleCalculator.Operations;
+using NUnit.Framework;
 
 namespace ConsoleCalculator.OperationTests.Tests
 {
@@ -8,11 +9,7 @@ namespace ConsoleCalculator.OperationTests.Tests
         [Test]
         public void TestAddtion()
         {
-            AdditionCommand additionCommand = new AdditionCommand
-            {
-                Value1 = 2,
-                Value2 = 3
-            };
+            AdditionCommand additionCommand = new AdditionCommand(2, 3);
 
             double result = additionCommand.Execute();
             Assert.AreEqual(result, 5);
@@ -21,11 +18,7 @@ namespace ConsoleCalculator.OperationTests.Tests
         [Test]
         public void TestSubtraction()
         {
-            SubtractionCommand subtractionCommand = new SubtractionCommand
-            {
-                Value1 = 3,
-                Value2 = 2
-            };
+            SubtractionCommand subtractionCommand = new SubtractionCommand(3, 2);
 
             double result = subtractionCommand.Execute();
             Assert.AreEqual(result, 1);
@@ -34,11 +27,7 @@ namespace ConsoleCalculator.OperationTests.Tests
         [Test]
         public void TestMultiplication()
         {
-            MultiplicationCommand multiplicationCommand = new MultiplicationCommand
-            {
-                Value1 = 3,
-                Value2 = 2
-            };
+            MultiplicationCommand multiplicationCommand = new MultiplicationCommand(3, 2);
 
             double result = multiplicationCommand.Execute();
             Assert.AreEqual(result, 6);
@@ -47,10 +36,7 @@ namespace ConsoleCalculator.OperationTests.Tests
         [Test]
         public void TestReciprocal()
         {
-            ReciprocalCommand reciprocalCommand = new ReciprocalCommand
-            {
-                Value1 = 4
-            };
+            ReciprocalCommand reciprocalCommand = new ReciprocalCommand(4);
 
             double result = reciprocalCommand.Execute();
             Assert.AreEqual(result, .25);
@@ -59,10 +45,7 @@ namespace ConsoleCalculator.OperationTests.Tests
         [Test]
         public void TestFactorial()
         {
-            FactorialCommand factorialCommand = new FactorialCommand
-            {
-                Value1 = 4
-            };
+            FactorialCommand factorialCommand = new FactorialCommand(4);
 
             double result = factorialCommand.Execute();
             Assert.AreEqual(result, 24);

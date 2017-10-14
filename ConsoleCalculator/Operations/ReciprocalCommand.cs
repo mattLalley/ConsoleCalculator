@@ -1,12 +1,14 @@
-﻿namespace ConsoleCalculator
+﻿using System;
+
+namespace ConsoleCalculator.Operations
 {
     public class ReciprocalCommand : IOperationCommand
     {
-        public double Value1 { get; set; }
-        public double Value2 { get; set; }
-        public double Execute()
+        public ReciprocalCommand(double leftOperand) : base(leftOperand, Double.NaN) {}
+        
+        public override double Execute()
         {
-            return 1 / Value1;
+            return 1 / _leftOperand;
         }
     }
 }

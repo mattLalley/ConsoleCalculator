@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using ConsoleCalculator.Operands;
+using ConsoleCalculator.Operations;
+using NUnit.Framework;
 
 namespace ConsoleCalculator.OperandTests.Tests
 {
@@ -8,7 +10,11 @@ namespace ConsoleCalculator.OperandTests.Tests
         [Test]
         public void TestSingleOperand()
         {
-            SingleOperand operand = new SingleOperand();
+            FactorialCommand command = new FactorialCommand(10);
+            SingleOperand operand = new SingleOperand(command);
+
+            double result = operand.GetValue();
+            Assert.AreEqual(result, 3628800);
         }
     }
 }
