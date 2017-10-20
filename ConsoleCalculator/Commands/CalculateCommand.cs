@@ -1,4 +1,6 @@
-﻿namespace ConsoleCalculator.Commands
+﻿using System;
+
+namespace ConsoleCalculator.Commands
 {
     public class CalculateCommand : ICommand
     {
@@ -8,10 +10,22 @@
         }
 
         private Calculator _calculator;
-        
+
         public void Execute()
         {
             _calculator.CalculateResult();
+        }
+
+        public void Execute(Action<String> error)
+        {
+            try
+            {
+                Execute();
+            }
+            catch (ArgumentException argumentException)
+            {
+                error(argumentException.Message);
+            }
         }
     }
 }

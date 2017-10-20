@@ -16,9 +16,8 @@ namespace ConsoleCalculatorTests
         {
             Calculator calculator = new Calculator();
             String input = "1/x ";
-            Parser parser = new Parser(calculator);
-            List<ICommand> commands = parser.Parse(input);
-            commands.Add(new CalculateCommand(calculator));
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
+            List<ICommand> commands = expressionParser.ParseCommands(input);
             commands.ForEach(command => command.Execute());
             
             IOperand operand = new ReciprocalOperation();
@@ -30,8 +29,8 @@ namespace ConsoleCalculatorTests
         {
             Calculator calculator = new Calculator();
             String input = "101/x";
-            Parser parser = new Parser(calculator);
-            List<ICommand> commands = parser.Parse(input);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
+            List<ICommand> commands = expressionParser.ParseCommands(input);
             commands.Add(new CalculateCommand(calculator));
             commands.ForEach(command => command.Execute());
             
@@ -44,9 +43,8 @@ namespace ConsoleCalculatorTests
         {
             Calculator calculator = new Calculator();
             String input = "/ ";
-            Parser parser = new Parser(calculator);
-            List<ICommand> commands = parser.Parse(input);
-            commands.Add(new CalculateCommand(calculator));
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
+            List<ICommand> commands = expressionParser.ParseCommands(input);
             commands.ForEach(command => command.Execute());
             
             IOperand operand = new DivisionOperation();
@@ -58,8 +56,8 @@ namespace ConsoleCalculatorTests
         {
             Calculator calculator = new Calculator();
             String input = "5A ";
-            Parser parser = new Parser(calculator);
-            List<ICommand> commands = parser.Parse(input);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
+            List<ICommand> commands = expressionParser.ParseCommands(input);
             commands.Add(new CalculateCommand(calculator));
             commands.ForEach(command => command.Execute());
             
@@ -71,8 +69,8 @@ namespace ConsoleCalculatorTests
         {
             Calculator calculator = new Calculator();
             String input = "5   ";
-            Parser parser = new Parser(calculator);
-            List<ICommand> commands = parser.Parse(input);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
+            List<ICommand> commands = expressionParser.ParseCommands(input);
             commands.Add(new CalculateCommand(calculator));
             commands.ForEach(command => command.Execute());
             
@@ -84,8 +82,8 @@ namespace ConsoleCalculatorTests
         {
             Calculator calculator = new Calculator();
             String input = "54   ";
-            Parser parser = new Parser(calculator);
-            List<ICommand> commands = parser.Parse(input);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
+            List<ICommand> commands = expressionParser.ParseCommands(input);
             commands.Add(new CalculateCommand(calculator));
             commands.ForEach(command => command.Execute());
             
@@ -98,8 +96,8 @@ namespace ConsoleCalculatorTests
         {
             Calculator calculator = new Calculator();
             String input = "5.4";
-            Parser parser = new Parser(calculator);
-            List<ICommand> commands = parser.Parse(input);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
+            List<ICommand> commands = expressionParser.ParseCommands(input);
             commands.Add(new CalculateCommand(calculator));
             commands.ForEach(command => command.Execute());
             
@@ -111,8 +109,8 @@ namespace ConsoleCalculatorTests
         {
             Calculator calculator = new Calculator();
             String input = ".4";
-            Parser parser = new Parser(calculator);
-            List<ICommand> commands = parser.Parse(input);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
+            List<ICommand> commands = expressionParser.ParseCommands(input);
             commands.Add(new CalculateCommand(calculator));
             commands.ForEach(command => command.Execute());
             
@@ -124,8 +122,8 @@ namespace ConsoleCalculatorTests
         {
             Calculator calculator = new Calculator();
             String input = "5+4=";
-            Parser parser = new Parser(calculator);
-            List<ICommand> commands = parser.Parse(input);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
+            List<ICommand> commands = expressionParser.ParseCommands(input);
             commands.ForEach(command => command.Execute());
             
             Assert.AreEqual(9, calculator.Result);
@@ -137,14 +135,14 @@ namespace ConsoleCalculatorTests
             // 2+2=
             // +5=
             Calculator calculator = new Calculator();
-            Parser parser = new Parser(calculator);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
             String input1 = "2+2=";
-            List<ICommand> commands = parser.Parse(input1);
+            List<ICommand> commands = expressionParser.ParseCommands(input1);
             commands.ForEach(command => command.Execute());
             Assert.AreEqual(4, calculator.Result);
             
             String input2 = "+5=";
-            List<ICommand> commands2 = parser.Parse(input2);
+            List<ICommand> commands2 = expressionParser.ParseCommands(input2);
             commands2.ForEach(command => command.Execute());
             Assert.AreEqual(9, calculator.Result);
         }
@@ -154,9 +152,9 @@ namespace ConsoleCalculatorTests
         {
             // 7 + 8 C + 7 =
             Calculator calculator = new Calculator();
-            Parser parser = new Parser(calculator);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
             String input1 = "7 + 8 C + 7 =";
-            List<ICommand> commands = parser.Parse(input1);
+            List<ICommand> commands = expressionParser.ParseCommands(input1);
             commands.ForEach(command => command.Execute());
             Assert.AreEqual(14, calculator.Result);
         }
@@ -166,10 +164,10 @@ namespace ConsoleCalculatorTests
         {
             // -5*5/3=
             Calculator calculator = new Calculator();
-            Parser parser = new Parser(calculator);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
             String input1 = "-5*5/3=";
             double expectedResult = -5.0 * 5.0 / 3.0;
-            List<ICommand> commands = parser.Parse(input1);
+            List<ICommand> commands = expressionParser.ParseCommands(input1);
             commands.ForEach(command => command.Execute());
             Assert.AreEqual(expectedResult, calculator.Result);
         }
@@ -179,9 +177,9 @@ namespace ConsoleCalculatorTests
         {
             // 7 + - 6 =
             Calculator calculator = new Calculator();
-            Parser parser = new Parser(calculator);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
             String input1 = "7 + - 6 =";
-            List<ICommand> commands = parser.Parse(input1);
+            List<ICommand> commands = expressionParser.ParseCommands(input1);
             commands.ForEach(command => command.Execute());
             Assert.AreEqual(1, calculator.Result);
         }
@@ -191,9 +189,9 @@ namespace ConsoleCalculatorTests
         {
             // -5 * 5 - 15 / 3 =
             Calculator calculator = new Calculator();
-            Parser parser = new Parser(calculator);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
             String input1 = "-5 * 5 - 15 / 3 =";
-            List<ICommand> commands = parser.Parse(input1);
+            List<ICommand> commands = expressionParser.ParseCommands(input1);
             commands.ForEach(command => command.Execute());
             Assert.AreEqual(-30, calculator.Result);
         }
@@ -203,9 +201,9 @@ namespace ConsoleCalculatorTests
         {
             // 5! / 12 A + 9 =
             Calculator calculator = new Calculator();
-            Parser parser = new Parser(calculator);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
             String input1 = "5! / 12 A + 9 =";
-            List<ICommand> commands = parser.Parse(input1);
+            List<ICommand> commands = expressionParser.ParseCommands(input1);
             commands.ForEach(command => command.Execute());
             Assert.AreEqual(9, calculator.Result);
         }
@@ -215,9 +213,9 @@ namespace ConsoleCalculatorTests
         {
             // 0.5 1/x * 2 =
             Calculator calculator = new Calculator();
-            Parser parser = new Parser(calculator);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
             String input1 = "0.5 1/x * 2 =";
-            List<ICommand> commands = parser.Parse(input1);
+            List<ICommand> commands = expressionParser.ParseCommands(input1);
             commands.ForEach(command => command.Execute());
             Assert.AreEqual(4, calculator.Result);
         }
@@ -226,27 +224,27 @@ namespace ConsoleCalculatorTests
         public void UnsupportedCharacterTest()
         {
             Calculator calculator = new Calculator();
-            Parser parser = new Parser(calculator);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
             String input = "bh,1 /";
-            Assert.IsTrue(parser.ContainsUnsupportedCharacters(input));
+            Assert.IsTrue(expressionParser.ContainsUnsupportedCharacters(input));
         }
         
         [Test]
         public void SupportedCharacterTest()
         {
             Calculator calculator = new Calculator();
-            Parser parser = new Parser(calculator);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
             String input = " 1 + 2 ";
-            Assert.IsFalse(parser.ContainsUnsupportedCharacters(input));
+            Assert.IsFalse(expressionParser.ContainsUnsupportedCharacters(input));
         }
 
         [Test]
         public void ContainsQuit()
         {
             Calculator calculator = new Calculator();
-            Parser parser = new Parser(calculator);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
             String input = "2+Q2/";
-            Assert.IsTrue(parser.ContainsQuitCommand(input));
+            Assert.IsTrue(expressionParser.ContainsQuitCommand(input));
         }
     }
 }

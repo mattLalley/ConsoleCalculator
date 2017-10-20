@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
-    <Compile Include="Client.cs" />
     <Compile Include="Commands\CalculateCommand.cs" />
     <Compile Include="Commands\ClearAllCommand.cs" />
     <Compile Include="Commands\ClearPreviousNumberCommand.cs" />
@@ -62,7 +61,7 @@
     <Compile Include="Operands\Operations\ReciprocalOperation.cs" />
     <Compile Include="Operands\Operations\SubtractionOperation.cs" />
     <Compile Include="Operands\RawOperand.cs" />
-    <Compile Include="Parser.cs" />
+    <Compile Include="ExpressionParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

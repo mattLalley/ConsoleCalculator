@@ -9,27 +9,38 @@ namespace ConsoleCalculator
         public static void Main(string[] args)
         {
             Calculator calculator = new Calculator();
-            Parser parser = new Parser(calculator);
+            ExpressionParser expressionParser = new ExpressionParser(calculator);
             List<ICommand> commands = new List<ICommand>();
             Console.WriteLine("Welcome to Console Calculator! \nPlease enter a calculation:");
-            while (true)
+            while (true) 
             {
                 string input = Console.ReadLine();
-                if (parser.ContainsQuitCommand(input))
+                if (expressionParser.ContainsQuitCommand(input))
                 {
                     Console.WriteLine("Thanks for using Console Calculator! \n");
                     break;
                 }
 
-                if (parser.ContainsUnsupportedCharacters(input))
+                if (expressionParser.ContainsUnsupportedCharacters(input))
                 {
                     Console.WriteLine("Unsupported characters detected");
                 }
                 else
                 {
-                    commands = parser.Parse(input);
-                    commands.ForEach(command => command.Execute());
-                    if (calculator.ResultText != "")
+                    commands = expressionParser.ParseCommands(input);
+                    String commandError = "";
+                    commands.ForEach(command =>
+                    {
+                        command.Execute(error =>
+                        {
+                            commandError = error;
+                        });
+                    });
+                    if (commandError != "")
+                    {
+                        Console.WriteLine(commandError);
+                    }
+                    else if (calculator.ResultText != "")
                     {
                         Console.WriteLine("Result: " + calculator.Result);
                     }

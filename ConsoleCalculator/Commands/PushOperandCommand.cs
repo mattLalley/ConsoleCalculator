@@ -1,4 +1,6 @@
-﻿namespace ConsoleCalculator.Commands
+﻿using System;
+
+namespace ConsoleCalculator.Commands
 {
     public class PushOperandCommand : ICommand
     {
@@ -10,10 +12,22 @@
 
         private Calculator _calculator;
         private double _value;
-        
+
         public void Execute()
         {
             _calculator.PushOperand(_value);
+        }
+
+        public void Execute(Action<String> error)
+        {
+            try
+            {
+                Execute();
+            }
+            catch (ArgumentException argumentException)
+            {
+                error(argumentException.Message);
+            }
         }
     }
 }

@@ -51,7 +51,6 @@
     <Compile Include="OperationTests\FactorialOperationTests.cs" />
     <Compile Include="OperationTests\OperationTests.cs" />
     <Compile Include="ParserTests.cs" />
-    <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

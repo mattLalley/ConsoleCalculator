@@ -5,9 +5,9 @@ using ConsoleCalculator.Commands;
 
 namespace ConsoleCalculator
 {
-    public class Parser
+    public class ExpressionParser
     {
-        public Parser(Calculator calculator)
+        public ExpressionParser(Calculator calculator)
         {
             _calculator = calculator;
         }
@@ -33,7 +33,7 @@ namespace ConsoleCalculator
             return Regex.IsMatch(input, pattern);
         }
 
-        public List<ICommand> Parse(String input)
+        public List<ICommand> ParseCommands(String input)
         {
             String pattern = @"(1\/x)|" + // reciprocal
                              @"([-+*\/!=])|" + // operators
