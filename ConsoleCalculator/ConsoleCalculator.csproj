@@ -41,19 +41,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculator.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="Commands\CalculateCommand.cs" />
+    <Compile Include="Commands\ClearAllCommand.cs" />
+    <Compile Include="Commands\ClearPreviousNumberCommand.cs" />
+    <Compile Include="Commands\EmptyCommand.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\PushOperandCommand.cs" />
+    <Compile Include="Commands\PushOperationCommand.cs" />
     <Compile Include="ConsoleCalculator.cs" />
-    <Compile Include="Operands\DoubleOperand.cs" />
+    <Compile Include="Operands\EmptyOperand.cs" />
+    <Compile Include="Operands\OperationOperand.cs" />
     <Compile Include="Operands\IOperand.cs" />
-    <Compile Include="Operands\IOperandValue.cs" />
+    <Compile Include="Operands\Operations\AdditionOperation.cs" />
+    <Compile Include="Operands\Operations\DivisionOperation.cs" />
+    <Compile Include="Operands\Operations\FactorialOperation.cs" />
+    <Compile Include="Operands\Operations\IOperation.cs" />
+    <Compile Include="Operands\Operations\MultiplicationOperation.cs" />
+    <Compile Include="Operands\Operations\ReciprocalOperation.cs" />
+    <Compile Include="Operands\Operations\SubtractionOperation.cs" />
     <Compile Include="Operands\RawOperand.cs" />
-    <Compile Include="Operands\SingleOperand.cs" />
-    <Compile Include="Operations\DivisionCommand.cs" />
-    <Compile Include="Operations\FactorialCommand.cs" />
-    <Compile Include="Operations\ReciprocalCommand.cs" />
-    <Compile Include="Operations\IOperationCommand.cs" />
-    <Compile Include="Operations\MultiplicationCommand.cs" />
-    <Compile Include="Operations\SubtractionCommand.cs" />
-    <Compile Include="Operations\AdditionCommand.cs" />
+    <Compile Include="Parser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

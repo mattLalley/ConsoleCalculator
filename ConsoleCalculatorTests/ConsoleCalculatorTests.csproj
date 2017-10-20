@@ -42,11 +42,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculatorTests.cs" />
+    <Compile Include="CommandTests.cs" />
+    <Compile Include="OperandTests\EmptyOperandTests.cs" />
     <Compile Include="OperandTests\RawOperandTests.cs" />
-    <Compile Include="OperandTests\SingleOperandTests.cs" />
+    <Compile Include="OperandTests\OperationOperandTests.cs" />
     <Compile Include="OperationTests\DivisionOperationTests.cs" />
     <Compile Include="OperationTests\FactorialOperationTests.cs" />
     <Compile Include="OperationTests\OperationTests.cs" />
+    <Compile Include="ParserTests.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

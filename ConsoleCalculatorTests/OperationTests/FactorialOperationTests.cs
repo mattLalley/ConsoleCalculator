@@ -1,4 +1,5 @@
 ﻿using System;
+using ConsoleCalculator.Operands;
 using ConsoleCalculator.Operations;
 using NUnit.Framework;
 
@@ -7,51 +8,57 @@ namespace ConsoleCalculator.OperationTests.Tests
     [TestFixture]
     public class FactorialOperationTests
     {
+        private readonly RawOperand _rawNegativeOne = new RawOperand(-1);
+        private readonly RawOperand _rawZero = new RawOperand(0);
+        private readonly RawOperand _rawOne = new RawOperand(1);
+        private readonly RawOperand _rawTwo = new RawOperand(2);
+        private readonly RawOperand _rawFour = new RawOperand(4);
+        
         [Test]
         public void TestFactorialNegative()
         {
-            FactorialCommand factorialCommand = new FactorialCommand(-1);
+            FactorialOperation factorialOperation = new FactorialOperation(_rawNegativeOne);
 
             Assert.Throws(
                 Is.TypeOf<ArgumentException>().
                 And.Message.EqualTo("Factorial input cannot be negative") ,
-                () => { factorialCommand.Execute(); }
+                () => { factorialOperation.GetValue(); }
                 );
         }
 
         [Test]
         public void TestFactorialZero()
         {
-            FactorialCommand factorialCommand = new FactorialCommand(0);
+            FactorialOperation factorialOperation = new FactorialOperation(_rawZero);
 
-            double result = factorialCommand.Execute();
+            double result = factorialOperation.GetValue();
             Assert.AreEqual(result, 1);
         }
         
         [Test]
         public void TestFactorialOne()
         {
-            FactorialCommand factorialCommand = new FactorialCommand(1);
+            FactorialOperation factorialOperation = new FactorialOperation(_rawOne);
 
-            double result = factorialCommand.Execute();
+            double result = factorialOperation.GetValue();
             Assert.AreEqual(result, 1);
         }
         
         [Test]
         public void TestFactorialTwo()
         {
-            FactorialCommand factorialCommand = new FactorialCommand(2);
+            FactorialOperation factorialOperation = new FactorialOperation(_rawTwo);
 
-            double result = factorialCommand.Execute();
+            double result = factorialOperation.GetValue();
             Assert.AreEqual(result, 2);
         }
         
         [Test]
         public void TestFactorialGreaterThanTwo()
         {
-            FactorialCommand factorialCommand = new FactorialCommand(4);
+            FactorialOperation factorialOperation = new FactorialOperation(_rawFour);
 
-            double result = factorialCommand.Execute();
+            double result = factorialOperation.GetValue();
             Assert.AreEqual(result, 24);
         }
     }

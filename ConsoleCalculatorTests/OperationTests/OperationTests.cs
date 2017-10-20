@@ -1,4 +1,5 @@
-﻿using ConsoleCalculator.Operations;
+﻿using ConsoleCalculator.Operands;
+using ConsoleCalculator.Operations;
 using NUnit.Framework;
 
 namespace ConsoleCalculator.OperationTests.Tests
@@ -6,48 +7,52 @@ namespace ConsoleCalculator.OperationTests.Tests
     [TestFixture]
     public class OperationTests
     {
+        private readonly RawOperand _rawTwo = new RawOperand(2);
+        private readonly RawOperand _rawThree = new RawOperand(3);
+        private readonly RawOperand _rawFour = new RawOperand(4);
+        
         [Test]
         public void TestAddtion()
         {
-            AdditionCommand additionCommand = new AdditionCommand(2, 3);
+            AdditionOperation additionOperation = new AdditionOperation(_rawTwo, _rawThree);
 
-            double result = additionCommand.Execute();
+            double result = additionOperation.GetValue();
             Assert.AreEqual(result, 5);
         }
 
         [Test]
         public void TestSubtraction()
         {
-            SubtractionCommand subtractionCommand = new SubtractionCommand(3, 2);
+            SubtractionOperation subtractionOperation = new SubtractionOperation(_rawThree, _rawTwo);
 
-            double result = subtractionCommand.Execute();
+            double result = subtractionOperation.GetValue();
             Assert.AreEqual(result, 1);
         }
         
         [Test]
         public void TestMultiplication()
         {
-            MultiplicationCommand multiplicationCommand = new MultiplicationCommand(3, 2);
+            MultiplicationOperation multiplicationOperation = new MultiplicationOperation(_rawThree, _rawTwo);
 
-            double result = multiplicationCommand.Execute();
+            double result = multiplicationOperation.GetValue();
             Assert.AreEqual(result, 6);
         }
         
         [Test]
         public void TestReciprocal()
         {
-            ReciprocalCommand reciprocalCommand = new ReciprocalCommand(4);
+            ReciprocalOperation reciprocalOperation = new ReciprocalOperation(_rawFour);
 
-            double result = reciprocalCommand.Execute();
+            double result = reciprocalOperation.GetValue();
             Assert.AreEqual(result, .25);
         }
         
         [Test]
         public void TestFactorial()
         {
-            FactorialCommand factorialCommand = new FactorialCommand(4);
+            FactorialOperation factorialOperation = new FactorialOperation(_rawFour);
 
-            double result = factorialCommand.Execute();
+            double result = factorialOperation.GetValue();
             Assert.AreEqual(result, 24);
         }
     }

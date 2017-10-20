@@ -1,0 +1,7 @@
+﻿namespace ConsoleCalculator.Commands
+{
+    public interface ICommand
+    {
+        void Execute();
+    }
+}

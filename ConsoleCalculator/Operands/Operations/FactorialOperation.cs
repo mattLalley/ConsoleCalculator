@@ -1,14 +1,24 @@
 ﻿using System;
+using ConsoleCalculator.Operands;
 
 namespace ConsoleCalculator.Operations
 {
-    public class FactorialCommand : IOperationCommand
+    public class FactorialOperation : IOperation
     {
-        public FactorialCommand(double leftOperand) : base(leftOperand, Double.NaN) {}
-        
-        public override double Execute()
+        public FactorialOperation()
         {
-            return CalculateFactorial(_leftOperand);
+            _precedenceLevel = 2;
+        }
+
+        public FactorialOperation(IOperand leftOperand) : base(leftOperand, new EmptyOperand())
+        {
+            
+            _precedenceLevel = 2;
+        }
+        
+        public override double GetValue()
+        {
+            return CalculateFactorial(LeftOperand.GetValue());
         }
 
         private double CalculateFactorial(double value)
